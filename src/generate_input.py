@@ -6,12 +6,17 @@ def list_of_files(dir):
 
 def run(input_gen, n):
     inputs = []
-    lof = list_of_files('./in')
-    for inp in lof:
-        print(inp)
-        inputs.append(''.join(read_and_write.read(inp)))
+    dictionary = {}
+
+    for inp in list_of_files('./in'):
+        number = int(inp.split('input')[1].split('.')[0])-1
+        dictionary[number] = ''.join(read_and_write.read(inp))
         
-    inputs = inputs + input_gen(n - len(inputs))[0:n - len(inputs)]
+    for i in range(len(dictionary)):
+        inputs.append(dictionary[i])
+
+    if len(inputs) < n:
+        inputs = inputs + input_gen(n - len(inputs))[0:n - len(inputs)]
 
     i = 1
     for inputi in inputs:
