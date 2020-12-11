@@ -1,8 +1,11 @@
-import os, read_and_write
+import os
+import read_and_write
+
 
 def list_of_files(dir):
-    arr = list(map(lambda x: f"{dir}/{x}",os.listdir(dir)))
+    arr = list(map(lambda x: f"{dir}/{x}", os.listdir(dir)))
     return arr
+
 
 def run(input_gen, n):
     inputs = []
@@ -11,7 +14,7 @@ def run(input_gen, n):
     for inp in list_of_files('./in'):
         number = int(inp.split('input')[1].split('.')[0])-1
         dictionary[number] = ''.join(read_and_write.read(inp))
-        
+
     for i in range(len(dictionary)):
         inputs.append(dictionary[i])
 
@@ -20,5 +23,5 @@ def run(input_gen, n):
 
     i = 1
     for inputi in inputs:
-        read_and_write.write(f"./in/input{i}.txt",inputi)
+        read_and_write.write(f"./in/input{i}.txt", inputi)
         i += 1
